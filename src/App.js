@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { GlobalStyles } from 'styles/GlobalStyles'
+import { theme } from './styles/Theme'
+import styled, { ThemeProvider } from 'styled-components'
+import Button from 'components/atoms/Button/Button'
 
-export default App;
+const Wrapper = styled.div`
+  background-color: ${({ theme }) => theme.colors.alabaster};
+  min-height: 100vh;
+`
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <Wrapper>
+      <GlobalStyles />
+      <Button text="Back this project" />
+    </Wrapper>
+  </ThemeProvider>
+)
+export default App
