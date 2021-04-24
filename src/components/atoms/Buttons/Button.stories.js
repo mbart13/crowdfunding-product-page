@@ -1,0 +1,23 @@
+import Button from './Buttons'
+
+const config = {
+  title: 'Components/Atoms/Button',
+  component: Button,
+}
+
+export default config
+
+const Template = (args) => <Button {...args}></Button>
+
+export const Default = Template.bind({})
+export const Disabled = Template.bind({})
+
+Default.args = {
+  disabled: false,
+  label: 'Back this project',
+}
+
+Disabled.args = {
+  disabled: true,
+  label: 'Out of Stock',
+}
