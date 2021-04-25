@@ -1,33 +1,24 @@
-import styled from 'styled-components'
-import { StyledButton } from './Buttons'
-import { rgba } from 'polished'
+import { useState } from 'react'
+
+import { StyledBookmark } from './Bookmark.styles'
 import { ReactComponent as BookmarkIcon } from 'assets/images/icon-bookmark.svg'
 
-const StyledBookmark = styled(StyledButton)`
-  background-color: ${({ theme }) => rgba(theme.colors.lighterBlack, 0.05)};
-  color: ${({ theme }) => theme.colors.gray};
-  position: relative;
-  padding-left: 4.5rem;
-  padding-right: 1.5rem;
+const Bookmark = () => {
+  const [isBookmarked, setIsBookmarked] = useState(false)
 
-  :hover,
-  :focus {
-    background-color: ${({ theme }) => rgba(theme.colors.lighterBlack, 0.05)};
+  const handleClick = () => {
+    setIsBookmarked((prevState) => !prevState)
   }
 
-  :hover #circle {
-    fill: #707070;
-  }
+  return (
+    <StyledBookmark
+      onClick={handleClick}
+      className={isBookmarked ? 'checked' : ''}
+    >
+      <BookmarkIcon />
+      {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+    </StyledBookmark>
+  )
+}
 
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-`
-export const Bookmark = () => (
-  <StyledBookmark>
-    <BookmarkIcon />
-    Bookmark
-  </StyledBookmark>
-)
+export default Bookmark

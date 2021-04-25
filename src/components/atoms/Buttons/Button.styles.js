@@ -28,8 +28,3 @@ export const StyledButton = styled.button`
       }
     `}
 `
-const Button = ({ label, disabled = false }) => (
-  <StyledButton disabled={disabled}>{label}</StyledButton>
-)
-
-export default Button

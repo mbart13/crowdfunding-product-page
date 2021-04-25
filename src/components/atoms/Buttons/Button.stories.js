@@ -1,4 +1,4 @@
-import Button from './Buttons'
+import Button from './Button'
 
 const config = {
   title: 'Components/Atoms/Button',
@@ -7,7 +7,7 @@ const config = {
 
 export default config
 
-const Template = (args) => <Button {...args}></Button>
+const Template = (args) => <Button {...args} />
 
 export const Default = Template.bind({})
 export const Disabled = Template.bind({})
