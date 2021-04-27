@@ -7,7 +7,7 @@ export const StyledButton = styled.button`
   color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
   border-radius: 5rem;
-  padding: 0.9375rem 2.375rem;
+  padding: 1.125rem 2.625rem;
   font-weight: bold;
   transition: background-color 0.2s linear;
 

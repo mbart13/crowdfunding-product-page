@@ -8,4 +8,5 @@ export const theme = {
     white: 'hsl(0, 0%, 100%)',
     gray: 'rgb(122, 122, 122)',
   },
+  borderRadius: '0.5rem',
 }

@@ -1,20 +1,20 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { StyledButton } from './Button.styles'
 import { rgba } from 'polished'
+import { screen } from 'styles/Screen'
 
 export const StyledBookmark = styled(StyledButton)`
   position: relative;
-  color: transparent;
-  width: 0;
+  width: 3.5rem;
+  height: 3.5rem;
   padding: 0.9375rem 0;
-  overflow: auto;
   transition: color 0.2s linear;
+  color: transparent;
 
   svg {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(-100%);
   }
 
   #circle,
@@ -29,30 +29,32 @@ export const StyledBookmark = styled(StyledButton)`
   }
 
   :focus #circle {
-    fill: ${({ theme }) => theme.colors.gray};
+    /* fill: ${({ theme }) => theme.colors.gray}; */
   }
 
-  &.checked {
-    color: ${({ theme }) => theme.colors.darkCyan};
-  }
+  ${({ bookmarked }) =>
+    bookmarked &&
+    css`
+      #circle {
+        fill: ${({ theme }) => theme.colors.darkCyan};
+      }
+      #path {
+        fill: ${({ theme }) => theme.colors.white};
+      }
+    `}
 
-  &.checked #circle {
-    fill: ${({ theme }) => theme.colors.darkCyan};
-  }
-
-  &.checked #path {
-    fill: ${({ theme }) => theme.colors.white};
-  }
-
-  @media screen and (min-width: 700px) {
-    width: unset;
+  ${screen.desktop(css`
     background-color: ${({ theme }) => rgba(theme.colors.lighterBlack, 0.05)};
     color: ${({ theme }) => theme.colors.gray};
     padding-left: 4.5rem;
     padding-right: 1.5rem;
+    width: unset;
+    height: unset;
 
-    svg {
-      transform: translateX(0);
-    }
-  }
+    ${({ bookmarked }) =>
+      bookmarked &&
+      css`
+        color: ${({ theme }) => theme.colors.darkCyan};
+      `}
+  `)}
 `

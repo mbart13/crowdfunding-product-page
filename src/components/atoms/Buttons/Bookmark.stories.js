@@ -9,13 +9,4 @@ export default config
 
 const Template = (args) => <Bookmark {...args} />
 
-export const Default = Template.bind({})
-export const Bookmarked = Template.bind({})
-
-Default.args = {
-  isBookmarked: false,
-}
-
-Bookmarked.args = {
-  isBookmarked: true,
-}
+export const BookmarkToggle = Template.bind({})

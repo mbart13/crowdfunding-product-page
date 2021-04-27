@@ -1,8 +1,8 @@
 import { GlobalStyles } from 'styles/GlobalStyles'
 import { theme } from './styles/Theme'
 import styled, { ThemeProvider } from 'styled-components'
-import Button from 'components/atoms/Buttons/Button'
-import Bookmark from 'components/atoms/Buttons/Bookmark'
+import Header from 'components/organisms/Header/Header'
+import Project from 'components/organisms/Project/Project'
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.alabaster};
@@ -14,10 +14,8 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Wrapper>
         <GlobalStyles />
-        <div>
-          <Button label="Back this project" />
-          <Bookmark />
-        </div>
+        <Header />
+        <Project />
       </Wrapper>
     </ThemeProvider>
   )

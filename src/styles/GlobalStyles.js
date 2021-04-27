@@ -13,12 +13,6 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  /* Remove default padding */
-  ul[class],
-  ol[class] {
-    padding: 0;
-  }
-
   /* Remove default margin */
   body,
   h1,
