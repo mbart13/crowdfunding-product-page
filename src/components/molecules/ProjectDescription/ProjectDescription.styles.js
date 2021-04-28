@@ -1,9 +1,9 @@
-import Card from 'components/organisms/Card/Card'
+import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
 import styled, { css } from 'styled-components'
 import logo from 'assets/images/logo-mastercraft.svg'
 import { screen } from 'styles/Screen'
 
-export const Wrapper = styled(Card)`
+export const Wrapper = styled(ViewWrapper)`
   padding: 3.25rem 1.5rem 0;
   text-align: center;
   margin-bottom: 1.5rem;

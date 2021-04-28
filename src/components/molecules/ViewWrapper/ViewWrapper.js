@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Card = styled.div`
+const ViewWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   position: relative;
   border-radius: ${({ theme }) => theme.borderRadius};
@@ -8,4 +8,4 @@ const Card = styled.div`
   margin-bottom: 1.5rem;
 `
 
-export default Card
+export default ViewWrapper

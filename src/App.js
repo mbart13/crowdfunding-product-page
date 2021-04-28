@@ -3,6 +3,9 @@ import { theme } from './styles/Theme'
 import styled, { ThemeProvider } from 'styled-components'
 import Header from 'components/organisms/Header/Header'
 import Project from 'components/organisms/Project/Project'
+import Footer from 'components/organisms/Footer/Footer'
+import ModalOverlay from 'components/molecules/ModalOverlay/ModalOverlay'
+import { AppProvider } from './context.js'
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.alabaster};
@@ -12,11 +15,15 @@ const Wrapper = styled.div`
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Wrapper>
-        <GlobalStyles />
-        <Header />
-        <Project />
-      </Wrapper>
+      <AppProvider>
+        <Wrapper>
+          <GlobalStyles />
+          <Header />
+          <Project />
+          <Footer />
+          <ModalOverlay />
+        </Wrapper>
+      </AppProvider>
     </ThemeProvider>
   )
 }

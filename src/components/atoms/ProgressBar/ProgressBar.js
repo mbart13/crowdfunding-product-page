@@ -1,5 +1,15 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { rgba } from 'polished'
+
+const animateProgress = keyframes`
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 90%;
+  }
+`
 
 const ProgressBar = styled.div`
   position: relative;
@@ -17,6 +27,7 @@ const ProgressBar = styled.div`
     width: 90%;
     height: 100%;
     border-radius: 2.0938rem;
+    animation: ${animateProgress} 1s linear;
   }
 `
 

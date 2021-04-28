@@ -1,21 +1,17 @@
-import styled from 'styled-components'
+import { LinksWrapper, StyledNavLink } from './NavLinks.styles'
+import { useAppContext } from 'context'
 
-const LinksWrapper = styled.ul`
-  display: none;
-`
+const links = ['About', 'Discover', 'Get Started']
 
 const NavLinks = () => {
+  const { isMenuOpen } = useAppContext()
   return (
-    <LinksWrapper>
-      <li>
-        <a href="/">About</a>
-      </li>
-      <li>
-        <a href="/">Discover</a>
-      </li>
-      <li>
-        <a href="/">Get Started</a>
-      </li>
+    <LinksWrapper as="ul" showMenu={isMenuOpen}>
+      {links.map((link, index) => (
+        <StyledNavLink key={index}>
+          <a href="/">{link}</a>
+        </StyledNavLink>
+      ))}
     </LinksWrapper>
   )
 }

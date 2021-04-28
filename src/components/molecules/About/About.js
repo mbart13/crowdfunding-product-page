@@ -1,8 +1,8 @@
-import Card from 'components/organisms/Card/Card'
+import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-const Wrapper = styled(Card)`
+const Wrapper = styled(ViewWrapper)`
   padding: 2.5rem 1.5rem;
 `
 

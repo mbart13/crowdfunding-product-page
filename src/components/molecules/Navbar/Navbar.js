@@ -1,25 +1,20 @@
-import styled from 'styled-components'
+import { Navbar, InnerWrapper } from './Navbar.styles'
 import Logo from 'components/atoms/Logo/Logo'
 import MenuIcon from 'components/atoms/MenuIcon/MenuIcon'
-import NavLinks from '../Navlinks/Navlinks'
+import NavLinks from '../NavLinks/NavLinks'
+import { useAppContext } from 'context'
 
-const NavHeader = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 1.5rem;
-`
-
-const Navbar = () => {
+const Navigation = () => {
+  const { isMenuOpen } = useAppContext()
   return (
-    <>
-      <NavHeader>
+    <Navbar>
+      <InnerWrapper isMenuOpen={isMenuOpen}>
         <Logo />
         <MenuIcon />
-      </NavHeader>
+      </InnerWrapper>
       <NavLinks />
-    </>
+    </Navbar>
   )
 }
 
-export default Navbar
+export default Navigation

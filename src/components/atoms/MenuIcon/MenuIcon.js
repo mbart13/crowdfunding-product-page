@@ -1,26 +1,21 @@
-import { useState } from 'react'
-
+import { Button } from './MenuIcon.styles'
 import { ReactComponent as Hamburger } from 'assets/images/icon-hamburger.svg'
 import { ReactComponent as CloseMenuIcon } from 'assets/images/icon-close-menu.svg'
-import styled from 'styled-components'
-
-const Button = styled.button`
-  background: none;
-  border: none;
-  svg {
-    cursor: pointer;
-  }
-`
+import { useAppContext } from 'context'
 
 const MenuIcon = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const { isMenuOpen, toggleMenu } = useAppContext()
 
   return (
     <Button
-      aria-label={isOpen ? 'Close Menu' : 'Open Menu'}
-      onClick={() => setIsOpen((prevState) => !prevState)}
+      aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+      onClick={toggleMenu}
     >
-      {isOpen ? <CloseMenuIcon /> : <Hamburger />}
+      {isMenuOpen ? (
+        <CloseMenuIcon aria-hidden="true" />
+      ) : (
+        <Hamburger aria-hidden="true" />
+      )}
     </Button>
   )
 }

@@ -1,10 +1,10 @@
-import Card from 'components/organisms/Card/Card'
+import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
 import styled, { css } from 'styled-components'
 import StatsItem from 'components/atoms/StatsItem/StatsItem'
 import ProgressBar from 'components/atoms/ProgressBar/ProgressBar'
 import { screen } from 'styles/Screen'
 
-const Wrapper = styled(Card)`
+const Wrapper = styled(ViewWrapper)`
   padding: 2rem 1.5625rem 2.5rem;
   text-align: center;
 

@@ -5,8 +5,8 @@ import { screen } from 'styles/Screen'
 
 export const StyledBookmark = styled(StyledButton)`
   position: relative;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
   padding: 0.9375rem 0;
   transition: color 0.2s linear;
   color: transparent;

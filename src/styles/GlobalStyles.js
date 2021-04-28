@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
+import bgMobile from 'assets/images/image-hero-mobile.jpg'
+import bgDesktop from 'assets/images/image-hero-desktop.jpg'
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -91,5 +93,16 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Commissioner', sans-serif;
+
+    ::after{
+      position: absolute;
+      width:0;
+      height:0;
+      overflow: hidden;
+      z-index: -1;
+      content:
+      url(${bgMobile})
+      url(${bgDesktop})
+    }
   }
 `

@@ -10,7 +10,7 @@ const MainWrapper = styled.main`
   margin-top: -3.625rem;
 
   ${screen.desktop(css`
-    margin: 0 auto;
+    margin: -5.75rem auto;
     max-width: 45.625rem;
   `)};
 `
