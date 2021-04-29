@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
-    cyan: 'hsl(176, 50%, 47%)',
-    darkCyan: 'hsl(176, 72%, 28%)',
+    cyan: 'rgb(60, 180, 172)',
+    darkCyan: 'rgb(20, 123, 116)',
     alabaster: 'hsl(0, 0%, 98%)',
     black: 'hsl(0, 0%, 0%)',
     lighterBlack: 'hsl(0, 0%, 18%)',

@@ -1,6 +1,7 @@
+import Pledge from 'components/molecules/Pledge/Pledge'
 import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
-import React from 'react'
 import styled from 'styled-components'
+import Paragraph from 'components/atoms/Paragraph/Paragraph'
 
 const Wrapper = styled(ViewWrapper)`
   padding: 2.5rem 1.5rem;
@@ -11,18 +12,11 @@ export const Heading = styled.h2`
   margin-bottom: 1.5rem;
 `
 
-export const Paragraph = styled.p`
-  font-size: 0.875rem;
-  color: ${({ theme }) => theme.colors.gray};
-  margin-bottom: 1.5rem;
-`
-
 const About = () => {
   return (
     <Wrapper>
       <Heading>About this project</Heading>
       <Paragraph>
-        {' '}
         The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform
         that elevates your screen to a more comfortable viewing height. Placing
         your monitor at eye level has the potential to improve your posture and
@@ -34,6 +28,7 @@ const About = () => {
         desk space below your computer to allow notepads, pens, and USB sticks
         to be stored under the stand.
       </Paragraph>
+      <Pledge />
     </Wrapper>
   )
 }
