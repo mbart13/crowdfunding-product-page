@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import data from 'data/data'
 
 const AppContext = React.createContext({
   isMenuOpen: false,
@@ -12,7 +13,7 @@ const AppProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider value={{ isMenuOpen, toggleMenu }}>
+    <AppContext.Provider value={{ isMenuOpen, toggleMenu, data }}>
       {children}
     </AppContext.Provider>
   )

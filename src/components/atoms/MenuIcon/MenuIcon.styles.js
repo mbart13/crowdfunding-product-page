@@ -5,6 +5,9 @@ export const Button = styled.button`
   padding: 0;
   background: none;
   border: none;
+  position: absolute;
+  right: 0;
+
   svg {
     cursor: pointer;
   }

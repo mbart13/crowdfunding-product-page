@@ -7,8 +7,8 @@ import { useAppContext } from 'context'
 const Navigation = () => {
   const { isMenuOpen } = useAppContext()
   return (
-    <Navbar>
-      <InnerWrapper isMenuOpen={isMenuOpen}>
+    <Navbar isMenuOpen={isMenuOpen}>
+      <InnerWrapper>
         <Logo />
         <MenuIcon />
       </InnerWrapper>

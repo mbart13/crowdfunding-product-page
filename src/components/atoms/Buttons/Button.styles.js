@@ -27,4 +27,12 @@ export const StyledButton = styled.button`
         background: ${({ theme }) => rgba(theme.colors.lighterBlack, 0.5)};
       }
     `}
+
+  ${({ small }) =>
+    small &&
+    css`
+      font-size: 0.875rem;
+      padding: 0.9375rem 2rem;
+      }
+    `}
 `

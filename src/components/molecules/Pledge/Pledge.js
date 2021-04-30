@@ -1,4 +1,6 @@
 import Radio from 'components/atoms/Buttons/Radio'
+import Button from 'components/atoms/Buttons/Button'
+import UserInput from 'components/molecules/UserInput/UserInput'
 import {
   Wrapper,
   Description,
@@ -7,40 +9,31 @@ import {
   ProductName,
   PledgeAmount,
   Quantity,
-  UserInput,
-  ButtonInputWrapper,
-  StyledInput,
-  StyledButton,
   StyledParagraph,
+  QuantityButtonWrapper,
 } from './Pledge.styles'
 
-const Pledge = () => {
+const Pledge = ({ modalView, productName, text, pledgeAmount, quantity }) => {
   return (
     <Wrapper as="article">
       <Description>
         <HeaderWrapper>
-          <Radio />
-          <NameWrapper>
-            <ProductName>Bamboo Stand</ProductName>
-            <PledgeAmount>Pledge $25 or more</PledgeAmount>
+          {modalView && <Radio />}
+          <NameWrapper modalView={modalView}>
+            <ProductName>{productName}</ProductName>
+            <PledgeAmount>Pledge ${pledgeAmount} or more</PledgeAmount>
           </NameWrapper>
         </HeaderWrapper>
-        <StyledParagraph>
-          You get an ergonomic stand made of natural bamboo. You've helped us
-          launch our promotional campaign, and you’ll be added to a special
-          Backer member list.
-        </StyledParagraph>
-        <Quantity>
-          <span>101</span> left
-        </Quantity>
+        <StyledParagraph modalView={modalView}>{text}</StyledParagraph>
+        <QuantityButtonWrapper>
+          <Quantity modalView={modalView}>
+            <span>{quantity}</span>
+            <span>left</span>
+          </Quantity>
+          {!modalView && <Button label="Select Reward" small />}
+        </QuantityButtonWrapper>
       </Description>
-      <UserInput>
-        <h3>Enter your pledge</h3>
-        <ButtonInputWrapper>
-          <StyledInput placeholder="25" />
-          <StyledButton label="Continue" />
-        </ButtonInputWrapper>
-      </UserInput>
+      {modalView && <UserInput />}
     </Wrapper>
   )
 }

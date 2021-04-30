@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
-  z-index: -10;
+  z-index: -1;
 
   ${({ showMenu }) =>
     showMenu &&
@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 
   ${screen.desktop(css`
     opacity: 0;
-    z-index: -10;
+    z-index: -1;
   `)}
 `
 
