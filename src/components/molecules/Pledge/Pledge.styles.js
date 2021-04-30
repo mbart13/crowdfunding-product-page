@@ -7,7 +7,7 @@ export const Wrapper = styled(ViewWrapper)`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.875rem;
   position: relative;
-  opacity: ${({ theme, quantity }) => (quantity === 0 ? 0.5 : 1)};
+  opacity: ${({ quantity }) => (quantity === 0 ? 0.5 : 1)};
 `
 
 export const Description = styled.div`
