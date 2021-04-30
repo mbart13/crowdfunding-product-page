@@ -6,7 +6,7 @@ const ProductList = () => {
   return (
     <>
       {data.map((product) => (
-        <Pledge {...product} />
+        <Pledge key={product.id} {...product} />
       ))}
     </>
   )

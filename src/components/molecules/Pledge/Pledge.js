@@ -15,7 +15,7 @@ import {
 
 const Pledge = ({ modalView, productName, text, pledgeAmount, quantity }) => {
   return (
-    <Wrapper as="article">
+    <Wrapper as="article" quantity={quantity}>
       <Description>
         <HeaderWrapper>
           {modalView && <Radio />}
@@ -30,7 +30,10 @@ const Pledge = ({ modalView, productName, text, pledgeAmount, quantity }) => {
             <span>{quantity}</span>
             <span>left</span>
           </Quantity>
-          {!modalView && <Button label="Select Reward" small />}
+          {!modalView && quantity > 0 && <Button label="Select Reward" small />}
+          {!modalView && quantity === 0 && (
+            <Button disabled small label="Out of Stock" />
+          )}
         </QuantityButtonWrapper>
       </Description>
       {modalView && <UserInput />}

@@ -3,7 +3,7 @@ import { screen } from 'styles/Screen'
 
 export const Navbar = styled.nav`
   padding: 2rem 1.5rem;
-  position: fixed;
+  position: ${(props) => (props.isMenuOpen ? 'fixed' : 'static')};
   width: 100%;
   z-index: ${(props) => (props.isMenuOpen ? 1 : 0)};
 
@@ -14,6 +14,7 @@ export const Navbar = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: static;
   `)}
 `
 
@@ -22,6 +23,4 @@ export const InnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* z-index: ${(props) => (props.isMenuOpen ? 1 : 0)}; */
-  /* position: ${(props) => (props.isMenuOpen ? 'relative' : 'static')}; */
 `

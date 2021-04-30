@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.footer`
-  align-self: center;
   text-align: center;
   padding: 1.5rem;
   font-size: 0.7rem;
+  margin-top: 5.75rem;
 
   a:focus {
     border: 2px dotted ${({ theme }) => theme.colors.darkCyan};

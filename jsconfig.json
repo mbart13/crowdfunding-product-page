@@ -3,5 +3,5 @@
     "baseUrl": "src",
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*", "src/components/molecules/Pledge/Pledge.js"]
+  "include": ["src/**/*"]
 }

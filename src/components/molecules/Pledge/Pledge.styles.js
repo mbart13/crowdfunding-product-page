@@ -7,6 +7,7 @@ export const Wrapper = styled(ViewWrapper)`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.875rem;
   position: relative;
+  opacity: ${({ theme, quantity }) => (quantity === 0 ? 0.5 : 1)};
 `
 
 export const Description = styled.div`
@@ -99,18 +100,6 @@ export const Quantity = styled.p`
       `)};
     `}
 `
-
-// export const StyledInput = styled(Input)`
-//   flex: 0 1 45%;
-//   max-width: 6.25rem;
-// `
-
-// export const StyledButton = styled(Button)`
-//   flex: 1 1 55%;
-//   padding: 0.9375rem 1.5625rem;
-//   font-size: 0.875rem;
-//   max-width: 7.1875rem;
-// `
 
 export const QuantityButtonWrapper = styled.div`
   display: flex;

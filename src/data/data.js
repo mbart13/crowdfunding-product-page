@@ -1,5 +1,6 @@
 const data = [
   {
+    id: 1,
     productName: 'Bamboo Stand',
     pledgeAmount: 25,
     text:
@@ -7,6 +8,7 @@ const data = [
     quantity: 101,
   },
   {
+    id: 2,
     productName: 'Black Edition Stand',
     pledgeAmount: 75,
     text:
@@ -14,6 +16,7 @@ const data = [
     quantity: 64,
   },
   {
+    id: 3,
     productName: 'Mahogany Special Edition',
     pledgeAmount: 200,
     text:

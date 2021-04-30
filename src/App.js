@@ -3,7 +3,7 @@ import { theme } from './styles/Theme'
 import styled, { ThemeProvider } from 'styled-components'
 import Header from 'components/organisms/Header/Header'
 import Project from 'components/organisms/Project/Project'
-import Footer from 'components/organisms/Footer/Footer'
+import Footer from 'components/molecules/Footer/Footer'
 import ModalOverlay from 'components/molecules/ModalOverlay/ModalOverlay'
 import { AppProvider } from './context.js'
 
