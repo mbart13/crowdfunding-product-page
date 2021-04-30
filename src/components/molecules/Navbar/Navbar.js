@@ -1,7 +1,7 @@
 import { Navbar, InnerWrapper } from './Navbar.styles'
 import Logo from 'components/atoms/Logo/Logo'
 import MenuIcon from 'components/atoms/MenuIcon/MenuIcon'
-import NavLinks from '../Navlinks/Navlinks'
+import NavLinks from '../NavLinks/NavLinks'
 import { useAppContext } from 'context'
 
 const Navigation = () => {
