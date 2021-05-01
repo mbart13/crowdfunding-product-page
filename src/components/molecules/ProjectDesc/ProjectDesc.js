@@ -5,7 +5,7 @@ import {
   Title,
   Description,
   ButtonWrapper,
-} from './ProjectDescription.styles'
+} from './ProjectDesc.styles'
 
 const ProjectDescription = () => {
   return (

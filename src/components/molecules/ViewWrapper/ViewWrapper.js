@@ -5,7 +5,9 @@ const ViewWrapper = styled.div`
   position: relative;
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 1.5rem;
+  :not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
 `
 
 export default ViewWrapper

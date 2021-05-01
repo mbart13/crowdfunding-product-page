@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import ProjectDescription from 'components/molecules/ProjectDescription/ProjectDescription'
+import ProjectDesc from 'components/molecules/ProjectDesc/ProjectDesc'
 import Stats from 'components/molecules/Stats/Stats'
 import { screen } from 'styles/Screen'
 import About from 'components/molecules/About/About'
@@ -18,7 +18,7 @@ const MainWrapper = styled.main`
 const Project = () => {
   return (
     <MainWrapper>
-      <ProjectDescription />
+      <ProjectDesc />
       <Stats />
       <About />
     </MainWrapper>
