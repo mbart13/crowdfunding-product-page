@@ -14,7 +14,7 @@ const appear = keyframes`
 `
 
 export const LinksWrapper = styled(ViewWrapper)`
-  display: ${(props) => (props.showMenu ? 'block' : 'none')};
+  display: ${props => (props.showMenu ? 'block' : 'none')};
   list-style-type: none;
   margin: 2.25rem 0 0;
   padding: 0;

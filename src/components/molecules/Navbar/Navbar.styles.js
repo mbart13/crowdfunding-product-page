@@ -3,9 +3,9 @@ import { screen } from 'styles/Screen'
 
 export const Navbar = styled.nav`
   padding: 2rem 1.5rem;
-  position: ${(props) => (props.isMenuOpen ? 'fixed' : 'initial')};
+  position: ${props => (props.isMenuOpen ? 'fixed' : 'initial')};
   width: 100%;
-  z-index: ${(props) => (props.isMenuOpen ? 1 : 0)};
+  z-index: ${props => (props.isMenuOpen ? 1 : 0)};
 
   ${screen.desktop(css`
     padding: 3rem 1.5rem;
