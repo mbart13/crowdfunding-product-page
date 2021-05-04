@@ -8,7 +8,7 @@ const Bookmark = () => {
 
   return (
     <StyledBookmark
-      onClick={() => setIsBookmarked((prevState) => !prevState)}
+      onClick={() => setIsBookmarked(prevState => !prevState)}
       bookmarked={isBookmarked}
     >
       <BookmarkIcon />

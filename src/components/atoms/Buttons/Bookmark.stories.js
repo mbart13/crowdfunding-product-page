@@ -7,6 +7,6 @@ const config = {
 
 export default config
 
-const Template = (args) => <Bookmark {...args} />
+const Template = args => <Bookmark {...args} />
 
 export const BookmarkToggle = Template.bind({})

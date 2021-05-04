@@ -7,7 +7,7 @@ const config = {
 
 export default config
 
-const Template = (args) => <Button {...args} />
+const Template = args => <Button {...args} />
 
 export const Default = Template.bind({})
 export const Disabled = Template.bind({})
