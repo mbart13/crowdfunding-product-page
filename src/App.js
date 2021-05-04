@@ -4,8 +4,9 @@ import styled, { ThemeProvider } from 'styled-components'
 import Header from 'components/organisms/Header/Header'
 import Project from 'components/organisms/Project/Project'
 import Footer from 'components/molecules/Footer/Footer'
-import ModalOverlay from 'components/molecules/Modal/Modal'
-import { AppProvider } from './context.js'
+import ModalOverlay from 'components/molecules/Modals/ModalOverlay'
+import { useAppContext } from 'context'
+import PledgeModal from 'components/molecules/Modals/PledgeModal'
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.alabaster};
@@ -13,17 +14,17 @@ const Wrapper = styled.div`
 `
 
 const App = () => {
+  const { isPledgeModalOpen } = useAppContext()
+
   return (
     <ThemeProvider theme={theme}>
-      <AppProvider>
-        <Wrapper>
-          <GlobalStyles />
-          <Header />
-          <Project />
-          <Footer />
-          <ModalOverlay />
-        </Wrapper>
-      </AppProvider>
+      <Wrapper>
+        <GlobalStyles />
+        <Header />
+        <Project />
+        <Footer />
+        {isPledgeModalOpen && <PledgeModal />}
+      </Wrapper>
     </ThemeProvider>
   )
 }

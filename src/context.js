@@ -8,25 +8,52 @@ const AppContext = React.createContext({
 
 const AppProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isPledgeModalOpen, setIsPledgeModalOpen] = useState(false)
+  const [pledges, setPledges] = useState(data.pledges)
 
   const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState)
+    if (!isMenuOpen) {
+      setIsMenuOpen(true)
+      document.getElementById('modal-container').classList.add('overlay')
+    } else {
+      setIsMenuOpen(false)
+      document.getElementById('modal-container').classList.remove('overlay')
+    }
   }
 
   const toggleModal = () => {
-    setIsModalOpen((prevState) => !prevState)
+    setIsPledgeModalOpen(prevState => !prevState)
+  }
+
+  const selectReward = id => {
+    const updatedPledges = pledges.map(pledge => {
+      if (pledge.id === id) {
+        return { ...pledge, selected: true }
+      }
+      return { ...pledge, selected: false }
+    })
+    setPledges(updatedPledges)
+    if (!isPledgeModalOpen) {
+      toggleModal()
+    }
   }
 
   useEffect(() => {
-    isModalOpen
+    isPledgeModalOpen
       ? (document.body.style.overflowY = 'hidden')
-      : (document.body.style.overflowY = 'initial')
-  }, [isModalOpen])
+      : (document.body.style.overflowY = 'auto')
+  }, [isPledgeModalOpen])
 
   return (
     <AppContext.Provider
-      value={{ isMenuOpen, toggleMenu, data, isModalOpen, toggleModal }}
+      value={{
+        isMenuOpen,
+        toggleMenu,
+        pledges,
+        isPledgeModalOpen,
+        toggleModal,
+        selectReward,
+      }}
     >
       {children}
     </AppContext.Provider>

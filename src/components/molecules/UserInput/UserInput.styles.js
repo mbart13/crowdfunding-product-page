@@ -2,8 +2,12 @@ import styled, { css } from 'styled-components'
 import { screen } from 'styles/Screen'
 
 export const Wrapper = styled.div`
-  padding: 1.5rem;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+  pointer-events: none;
 
   h3 {
     font-size: 0.875rem;
@@ -28,6 +32,15 @@ export const Wrapper = styled.div`
       margin-bottom: 0;
     }
   `)};
+
+  ${({ selected }) =>
+    selected &&
+    css`
+      max-height: 50rem;
+      padding: 1.5rem;
+      opacity: 1;
+      pointer-events: auto;
+    `}
 `
 
 export const FormWrapper = styled.form`
@@ -38,7 +51,7 @@ export const FormWrapper = styled.form`
   ${screen.desktop(css`
     width: 100%;
     justify-content: flex-end;
-    flex-basis: 50%;
+    flex-basis: 75%;
     flex-wrap: wrap;
   `)}
 

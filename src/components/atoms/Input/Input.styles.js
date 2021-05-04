@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { rgba } from 'polished'
 
 const InputWrapper = styled.div`
@@ -23,7 +23,24 @@ const InputWrapper = styled.div`
     ::placeholder {
       color: ${({ theme }) => rgba(theme.colors.black, 0.25)};
     }
+    /* Chrome, Safari, Edge, Opera */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
   }
+
+  ${({ isError }) =>
+    isError &&
+    css`
+      border: 1px solid red;
+    `}
 `
 
 export default InputWrapper

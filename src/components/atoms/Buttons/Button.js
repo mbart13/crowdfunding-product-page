@@ -1,12 +1,15 @@
 import { StyledButton } from './Button.styles'
-import { useAppContext } from 'context'
 
-const Button = ({ label, disabled = false, className, small = false }) => {
-  const { toggleModal } = useAppContext()
-
+const Button = ({
+  label,
+  disabled = false,
+  className,
+  small = false,
+  handleClick,
+}) => {
   return (
     <StyledButton
-      onClick={toggleModal}
+      onClick={handleClick}
       small={small}
       disabled={disabled}
       className={className}
