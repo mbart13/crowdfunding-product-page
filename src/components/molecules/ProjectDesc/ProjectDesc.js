@@ -10,13 +10,13 @@ import {
 } from './ProjectDesc.styles'
 
 const ProjectDescription = () => {
-  const { toggleModal } = useAppContext()
+  const { openBackingCard } = useAppContext()
   return (
     <Wrapper>
       <Title>{data.project_details.name}</Title>
       <Description>{data.project_details.description}</Description>
       <ButtonWrapper>
-        <Button handleClick={toggleModal} label="Back this project" />
+        <Button handleClick={openBackingCard} label="Back this project" />
         <Bookmark />
       </ButtonWrapper>
     </Wrapper>

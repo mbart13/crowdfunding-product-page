@@ -1,4 +1,10 @@
 const data = {
+  stats: {
+    backed: 89914,
+    backers: 5007,
+    days_left: 56,
+    required_amount: 100000,
+  },
   project_details: {
     name: 'Mastercraft Bamboo Monitor Riser',
     description:

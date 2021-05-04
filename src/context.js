@@ -8,22 +8,29 @@ const AppContext = React.createContext({
 
 const AppProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isPledgeModalOpen, setIsPledgeModalOpen] = useState(false)
+  const [isBackingCardShown, setIsShowBackingCardShown] = useState(false)
+  const [isConfirmationCardShown, setIsConfirmationCardShown] = useState(false)
   const [pledges, setPledges] = useState(data.pledges)
+  const [stats, setStats] = useState(data.stats)
 
   const toggleMenu = () => {
+    const container = document.getElementById('modal-container')
     if (!isMenuOpen) {
       setIsMenuOpen(true)
-      document.getElementById('modal-container').classList.add('overlay')
+      container.classList.add('overlay')
     } else {
       setIsMenuOpen(false)
-      document.getElementById('modal-container').classList.remove('overlay')
+      container.classList.remove('overlay')
     }
   }
 
-  const toggleModal = () => {
-    setIsPledgeModalOpen(prevState => !prevState)
-  }
+  const openBackingCard = () => setIsShowBackingCardShown(true)
+
+  const closeBackingCard = () => setIsShowBackingCardShown(false)
+
+  const openConfirmationCard = () => setIsConfirmationCardShown(true)
+
+  const closeConfirmationCard = () => setIsConfirmationCardShown(false)
 
   const selectReward = id => {
     const updatedPledges = pledges.map(pledge => {
@@ -33,26 +40,40 @@ const AppProvider = ({ children }) => {
       return { ...pledge, selected: false }
     })
     setPledges(updatedPledges)
-    if (!isPledgeModalOpen) {
-      toggleModal()
-    }
+    openBackingCard()
+  }
+
+  const updateStats = amount => {
+    setStats(prevState => {
+      return {
+        ...prevState,
+        backed: prevState.backed + amount,
+        backers: prevState.backers + 1,
+      }
+    })
   }
 
   useEffect(() => {
-    isPledgeModalOpen
+    isBackingCardShown || isConfirmationCardShown
       ? (document.body.style.overflowY = 'hidden')
       : (document.body.style.overflowY = 'auto')
-  }, [isPledgeModalOpen])
+  }, [isBackingCardShown, isConfirmationCardShown])
 
   return (
     <AppContext.Provider
       value={{
+        stats,
+        isBackingCardShown,
+        openBackingCard,
+        closeBackingCard,
+        isConfirmationCardShown,
+        openConfirmationCard,
+        closeConfirmationCard,
         isMenuOpen,
         toggleMenu,
         pledges,
-        isPledgeModalOpen,
-        toggleModal,
         selectReward,
+        updateStats,
       }}
     >
       {children}

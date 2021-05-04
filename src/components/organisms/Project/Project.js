@@ -15,12 +15,12 @@ const MainWrapper = styled.main`
   `)};
 `
 
-const Project = () => {
+const Project = ({ handleOpenModal }) => {
   return (
     <MainWrapper>
-      <ProjectDesc />
+      <ProjectDesc handleOpenModal={handleOpenModal} />
       <Stats />
-      <About />
+      <About handleOpenModal={handleOpenModal} />
     </MainWrapper>
   )
 }

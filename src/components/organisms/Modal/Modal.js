@@ -2,8 +2,6 @@ import { useEffect, useRef, useCallback } from 'react'
 import ReactDOM from 'react-dom'
 
 import styled, { css } from 'styled-components'
-import { useAppContext } from 'context'
-import { screen } from 'styles/Screen'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -12,53 +10,32 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  z-index: -1;
+  opacity: 1;
+  /* opacity: 0;
+  z-index: -1; */
   overflow-y: auto;
   display: grid;
   place-items: center;
   padding: 7.5rem 1.5rem;
   transition: opacity 0.5s ease-out, z-index 0.5s ease-out;
-
-  ${({ showMenu }) =>
-    showMenu &&
-    css`
-      opacity: 1;
-      z-index: 0;
-      overflow-y: initial;
-
-      ${screen.desktop(css`
-        opacity: 0;
-        z-index: -1;
-      `)}
-    `}
-
-  ${({ showModal }) =>
-    showModal &&
-    css`
-      opacity: 1;
-      z-index: 0;
-      /* overflow-y: auto; */
-    `}
 `
 
-const ModalOverlay = ({ children }) => {
-  const { isMenuOpen, isPledgeModalOpen, toggleModal } = useAppContext()
+const Modal = ({ children, handleCloseModal }) => {
   const modalRef = useRef()
 
   const closeModal = e => {
     if (modalRef.current === e.target) {
-      toggleModal()
+      handleCloseModal()
     }
   }
 
   const handleEsc = useCallback(
     event => {
       if (event.keyCode === 27) {
-        toggleModal()
+        handleCloseModal()
       }
     },
-    [toggleModal]
+    [handleCloseModal]
   )
 
   useEffect(() => {
@@ -67,16 +44,11 @@ const ModalOverlay = ({ children }) => {
   }, [handleEsc])
 
   return ReactDOM.createPortal(
-    <Wrapper
-      onClick={closeModal}
-      ref={modalRef}
-      showMenu={isMenuOpen}
-      showModal={isPledgeModalOpen}
-    >
+    <Wrapper onClick={closeModal} ref={modalRef}>
       {children}
     </Wrapper>,
     document.getElementById('modal-container')
   )
 }
 
-export default ModalOverlay
+export default Modal

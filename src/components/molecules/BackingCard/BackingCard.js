@@ -2,11 +2,9 @@ import styled, { css, keyframes } from 'styled-components'
 import ViewWrapper from '../ViewWrapper/ViewWrapper'
 import Paragraph from 'components/atoms/Paragraph/Paragraph'
 import ProductList from 'components/organisms/ProductList/ProductList'
-import Pledge from '../Pledge/Pledge'
 import { screen } from 'styles/Screen'
 import { useAppContext } from 'context'
 import { ReactComponent as CloseModal } from 'assets/images/icon-close-modal.svg'
-import ModalOverlay from './ModalOverlay'
 
 const Container = styled(ViewWrapper)`
   width: 85vw;
@@ -34,24 +32,20 @@ const Heading = styled.div`
   }
 `
 
-const PledgeModal = () => {
-  const { isPledgeModalOpen, togglePledgeModal } = useAppContext()
-
+const BackingCard = ({ handleCloseModal }) => {
   return (
-    <ModalOverlay>
-      <Container isModalOpen={isPledgeModalOpen}>
-        <Heading>
-          <h2>Back this project</h2>
-          <CloseModal onClick={togglePledgeModal} />
-        </Heading>
-        <Paragraph>
-          Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
-          the world?
-        </Paragraph>
-        <ProductList modalView />
-      </Container>
-    </ModalOverlay>
+    <Container>
+      <Heading>
+        <h2>Back this project</h2>
+        <CloseModal onClick={handleCloseModal} />
+      </Heading>
+      <Paragraph>
+        Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
+        the world?
+      </Paragraph>
+      <ProductList modalView />
+    </Container>
   )
 }
 
-export default PledgeModal
+export default BackingCard
