@@ -1,21 +1,22 @@
 import Bookmark from 'components/atoms/Buttons/Bookmark'
 import Button from 'components/atoms/Buttons/Button'
+import data from 'data/data'
+import { useAppContext } from 'context'
 import {
   Wrapper,
   Title,
   Description,
   ButtonWrapper,
-} from './ProjectDescription.styles'
+} from './ProjectDesc.styles'
 
 const ProjectDescription = () => {
+  const { openBackingCard } = useAppContext()
   return (
     <Wrapper>
-      <Title>Mastercraft Bamboo Monitor Riser</Title>
-      <Description>
-        A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-      </Description>
+      <Title>{data.project_details.name}</Title>
+      <Description>{data.project_details.description}</Description>
       <ButtonWrapper>
-        <Button label="Back this project" />
+        <Button handleClick={openBackingCard} label="Back this project" />
         <Bookmark />
       </ButtonWrapper>
     </Wrapper>

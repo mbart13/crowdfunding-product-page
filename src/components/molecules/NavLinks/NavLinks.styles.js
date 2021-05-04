@@ -18,7 +18,6 @@ export const LinksWrapper = styled(ViewWrapper)`
   list-style-type: none;
   margin: 2.25rem 0 0;
   padding: 0;
-  z-index: 10;
   animation: ${appear} 0.3s ease-out;
 
   ${screen.desktop(css`

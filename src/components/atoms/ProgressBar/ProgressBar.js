@@ -24,7 +24,7 @@ const ProgressBar = styled.div`
     top: 0;
     left: 0;
     background-color: ${({ theme }) => theme.colors.cyan};
-    width: 90%;
+    width: ${props => `${Math.round((props.raised / props.total) * 100)}%`};
     height: 100%;
     border-radius: 2.0938rem;
     animation: ${animateProgress} 1s linear;

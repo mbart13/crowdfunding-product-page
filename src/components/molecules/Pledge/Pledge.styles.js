@@ -3,11 +3,28 @@ import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
 import Paragraph from 'components/atoms/Paragraph/Paragraph'
 import { screen } from 'styles/Screen'
 
+export const ProductName = styled.h2`
+  color: ${({ theme }) => theme.colors.black};
+  font-size: 0.875rem;
+
+  ${screen.desktop(css`
+    font-size: 1rem;
+  `)};
+`
+
 export const Wrapper = styled(ViewWrapper)`
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.875rem;
   position: relative;
   opacity: ${({ quantity }) => (quantity === 0 ? 0.5 : 1)};
+  pointer-events: ${({ quantity }) => (quantity === 0 ? 'none' : 'auto')};
+
+  ${({ selected, modalView }) =>
+    selected &&
+    modalView &&
+    css`
+      border: ${({ theme }) => `2px solid ${theme.colors.cyan}`};
+    `}
 `
 
 export const Description = styled.div`
@@ -16,6 +33,18 @@ export const Description = styled.div`
   ${screen.desktop(css`
     /* padding-bottom: 0; */
   `)};
+
+  ${({ modalView }) =>
+    modalView &&
+    css`
+      :hover {
+        cursor: pointer;
+      }
+
+      :hover ${ProductName} {
+        color: ${({ theme }) => theme.colors.cyan};
+      }
+    `}
 `
 
 export const HeaderWrapper = styled.div`
@@ -45,6 +74,12 @@ export const NameWrapper = styled.div`
 `
 
 export const StyledParagraph = styled(Paragraph)`
+  ${({ noReward }) =>
+    noReward &&
+    css`
+      margin-bottom: 0;
+    `}
+
   ${screen.desktop(css`
     padding-left: 0;
 
@@ -57,14 +92,6 @@ export const StyledParagraph = styled(Paragraph)`
   `)}
 `
 
-export const ProductName = styled.h2`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 0.875rem;
-
-  ${screen.desktop(css`
-    font-size: 1rem;
-  `)};
-`
 export const PledgeAmount = styled.p`
   color: ${({ theme }) => theme.colors.cyan};
   font-weight: 500;

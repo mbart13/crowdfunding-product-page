@@ -1,17 +1,16 @@
 import { Wrapper, StatsNumber, StatsDescription } from './StatsItem.styles'
 import CountUp from 'react-countup'
 
-const StatsItem = ({ number, description }) => {
+const StatsItem = ({ number, description, prefix }) => {
   return (
     <Wrapper>
       <StatsNumber>
         <CountUp
           separator=","
-          prefix={number.includes('$') ? '$' : ''}
-          end={number.includes('$') ? +number.slice(1) : +number}
+          prefix={prefix ? prefix : ''}
+          end={number}
           duration={1}
         />
-        {number}
       </StatsNumber>
       <StatsDescription>{description}</StatsDescription>
     </Wrapper>
