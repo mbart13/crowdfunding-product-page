@@ -10,7 +10,7 @@ export const screen = {
   },
   smallPhone: (...args) => {
     return css`
-      @media screen and (max-width: 23.4375rem) {
+      @media screen and (max-width: 24.5rem) {
         ${args};
       }
     `

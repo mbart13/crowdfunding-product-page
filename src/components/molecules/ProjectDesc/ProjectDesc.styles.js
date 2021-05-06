@@ -49,4 +49,17 @@ export const ButtonWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding-bottom: 2.5rem;
+
+  Button {
+    margin-right: 0.5rem;
+  }
+
+  ${screen.smallPhone(css`
+    justify-content: center;
+    Button {
+      margin-bottom: 0.8rem;
+      padding: 1rem 1.625rem;
+      font-size: 0.9rem;
+    }
+  `)}
 `

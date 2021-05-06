@@ -3,7 +3,10 @@ import data from 'data/data'
 
 const AppContext = React.createContext({
   isMenuOpen: false,
-  isModalOpen: false,
+  isBackingCardShown: false,
+  isConfirmationCardShown: false,
+  rewards: [],
+  stats: [],
 })
 
 const AppProvider = ({ children }) => {
