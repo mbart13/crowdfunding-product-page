@@ -2,9 +2,9 @@ import ViewWrapper from 'components/molecules/ViewWrapper/ViewWrapper'
 import styled, { css } from 'styled-components'
 import Paragraph from 'components/atoms/Paragraph/Paragraph'
 import { screen } from 'styles/Screen'
-import ProductList from 'components/organisms/ProductList/ProductList'
 import data from 'data/data'
-
+import { useAppContext } from 'context'
+import Reward from 'components/molecules/Reward/Reward'
 const Wrapper = styled(ViewWrapper)`
   padding: 2.5rem 1.5rem;
 `
@@ -19,12 +19,15 @@ export const Heading = styled.h2`
 `
 
 const About = () => {
+  const { rewards } = useAppContext()
   return (
     <Wrapper>
       <Heading>About this project</Heading>
       <Paragraph>{data.project_details.text1}</Paragraph>
       <Paragraph>{data.project_details.text2}</Paragraph>
-      <ProductList />
+      {rewards.slice(1).map(reward => (
+        <Reward key={reward.id} {...reward} />
+      ))}
     </Wrapper>
   )
 }

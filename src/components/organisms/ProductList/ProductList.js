@@ -2,10 +2,10 @@ import { useAppContext } from 'context'
 import Pledge from 'components/molecules/Pledge/Pledge'
 
 const ProductList = ({ modalView = false }) => {
-  const { pledges } = useAppContext()
-  let displayedPledges = [...pledges]
+  const { rewards } = useAppContext()
+  let displayedPledges = [...rewards]
   if (!modalView) {
-    displayedPledges = pledges.slice(1)
+    displayedPledges = rewards.slice(1)
   }
   return (
     <>

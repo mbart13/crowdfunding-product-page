@@ -3,9 +3,6 @@ import { screen } from 'styles/Screen'
 
 export const Wrapper = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-  max-height: 0;
-  padding: 0;
-  opacity: 0;
   transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
   pointer-events: none;
 
@@ -38,7 +35,6 @@ export const Wrapper = styled.div`
     css`
       max-height: 50rem;
       padding: 1.5rem;
-      opacity: 1;
       pointer-events: auto;
     `}
 `

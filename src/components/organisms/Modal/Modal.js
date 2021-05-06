@@ -1,7 +1,26 @@
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef, useCallback, useState } from 'react'
 import ReactDOM from 'react-dom'
 
-import styled, { css } from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+`
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`
 
 const Wrapper = styled.div`
   position: fixed;
@@ -10,17 +29,22 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  /* opacity: 0;
-  z-index: -1; */
   overflow-y: auto;
   display: grid;
   place-items: center;
-  padding: 7.5rem 1.5rem;
-  transition: opacity 0.5s ease-out, z-index 0.5s ease-out;
+  padding: 5.5rem 1.5rem;
+
+  &.fade-in {
+    animation: ${fadeIn} 0.5s forwards ease-in;
+  }
+
+  &.fade-out {
+    animation: ${fadeOut} 0.5s forwards ease-in;
+  }
 `
 
-const Modal = ({ children, handleCloseModal }) => {
+const Modal = ({ children, handleCloseModal, show }) => {
+  const [shouldRender, setRender] = useState(show)
   const modalRef = useRef()
 
   const closeModal = e => {
@@ -43,10 +67,27 @@ const Modal = ({ children, handleCloseModal }) => {
     return () => window.removeEventListener('keydown', handleEsc)
   }, [handleEsc])
 
+  useEffect(() => {
+    if (show) setRender(true)
+  }, [show])
+
+  const onAnimationEnd = () => {
+    if (!show) setRender(false)
+  }
+
   return ReactDOM.createPortal(
-    <Wrapper onClick={closeModal} ref={modalRef}>
-      {children}
-    </Wrapper>,
+    shouldRender && (
+      <Wrapper
+        role="dialog"
+        aria-modal="true"
+        onAnimationEnd={onAnimationEnd}
+        className={show ? 'fade-in' : 'fade-out'}
+        onClick={closeModal}
+        ref={modalRef}
+      >
+        {children}
+      </Wrapper>
+    ),
     document.getElementById('modal-container')
   )
 }

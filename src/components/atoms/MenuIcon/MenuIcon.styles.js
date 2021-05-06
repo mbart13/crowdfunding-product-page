@@ -8,6 +8,15 @@ export const Button = styled.button`
   position: absolute;
   right: 0;
 
+  :focus {
+    outline: 2px dashed ${({ theme }) => theme.colors.red};
+    outline-offset: 4px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
   svg {
     cursor: pointer;
   }

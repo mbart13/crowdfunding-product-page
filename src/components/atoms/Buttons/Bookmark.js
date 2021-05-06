@@ -8,11 +8,13 @@ const Bookmark = () => {
 
   return (
     <StyledBookmark
-      onClick={() => setIsBookmarked((prevState) => !prevState)}
+      aria-checked={isBookmarked ? true : false}
+      role="checkbox"
+      onClick={() => setIsBookmarked(prevState => !prevState)}
       bookmarked={isBookmarked}
     >
       <BookmarkIcon />
-      {isBookmarked ? 'Bookmarked' : 'Bookmark'}
+      <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
     </StyledBookmark>
   )
 }

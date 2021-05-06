@@ -28,16 +28,16 @@ const App = () => {
         <GlobalStyles />
         <Header />
         <Project />
-        {isBackingCardShown && (
-          <Modal handleCloseModal={closeBackingCard}>
-            <BackingCard handleCloseModal={closeBackingCard} />
-          </Modal>
-        )}
-        {isConfirmationCardShown && (
-          <Modal handleCloseModal={closeConfirmationCard}>
-            <ConfirmationModal handleCloseModal={closeConfirmationCard} />
-          </Modal>
-        )}
+        <Modal handleCloseModal={closeBackingCard} show={isBackingCardShown}>
+          <BackingCard handleCloseModal={closeBackingCard} />
+        </Modal>
+        <Modal
+          handleCloseModal={closeConfirmationCard}
+          show={isConfirmationCardShown}
+        >
+          <ConfirmationModal handleCloseModal={closeConfirmationCard} />
+        </Modal>
+
         <Footer />
       </Wrapper>
     </ThemeProvider>

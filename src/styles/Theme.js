@@ -7,6 +7,7 @@ export const theme = {
     lighterBlack: 'hsl(0, 0%, 18%)',
     white: 'hsl(0, 0%, 100%)',
     gray: 'rgb(122, 122, 122)',
+    red: '#DB3930',
   },
   borderRadius: '0.5rem',
 }

@@ -9,6 +9,7 @@ const MenuIcon = () => {
   return (
     <Button
       aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
+      aria-expanded={isMenuOpen ? true : false}
       onClick={toggleMenu}
     >
       {isMenuOpen ? (

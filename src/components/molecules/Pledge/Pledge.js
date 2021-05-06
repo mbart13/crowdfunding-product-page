@@ -1,7 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
-
 import Radio from 'components/atoms/Buttons/Radio'
-import Button from 'components/atoms/Buttons/Button'
 import UserInput from 'components/molecules/UserInput/UserInput'
 import { useAppContext } from 'context'
 import {
@@ -16,60 +13,37 @@ import {
   QuantityButtonWrapper,
 } from './Pledge.styles'
 
-const Pledge = ({
-  id,
-  modalView,
-  title,
-  text,
-  pledgeAmount,
-  quantity,
-  selected,
-}) => {
+const Pledge = ({ id, title, text, pledgeAmount, quantity, selected }) => {
   const { selectReward } = useAppContext()
   return (
     <Wrapper
-      as="article"
       quantity={quantity}
+      tabIndex={quantity === 0 ? '-1' : ''}
       selected={selected}
-      modalView={modalView}
+      onClick={() => selectReward(id)}
     >
-      <Description
-        modalView={modalView}
-        onClick={() => (modalView ? selectReward(id) : null)}
-      >
+      <Description as="button" disabled={quantity === 0}>
         <HeaderWrapper>
-          {modalView && <Radio checked={selected} />}
-          <NameWrapper modalView={modalView}>
+          <Radio role="radio" aria-label="Select Reward" checked={selected} />
+          <NameWrapper>
             <ProductName>{title}</ProductName>
             {pledgeAmount && (
               <PledgeAmount>Pledge ${pledgeAmount} or more</PledgeAmount>
             )}
           </NameWrapper>
         </HeaderWrapper>
-        <StyledParagraph modalView={modalView} noReward={quantity === null}>
-          {text}
-        </StyledParagraph>
-        <QuantityButtonWrapper>
-          {pledgeAmount && (
-            <Quantity modalView={modalView}>
+        <StyledParagraph noReward={quantity === null}>{text}</StyledParagraph>
+        {pledgeAmount && (
+          <QuantityButtonWrapper>
+            <Quantity>
               <span>{quantity}</span>
               <span>left</span>
             </Quantity>
-          )}
-          {!modalView && quantity > 0 && (
-            <Button
-              handleClick={() => selectReward(id)}
-              label="Select Reward"
-              small
-            />
-          )}
-          {!modalView && quantity === 0 && (
-            <Button disabled small label="Out of Stock" />
-          )}
-        </QuantityButtonWrapper>
+          </QuantityButtonWrapper>
+        )}
       </Description>
-      {modalView && (
-        <UserInput selected={selected} pledgeAmount={pledgeAmount} />
+      {quantity !== 0 && selected && (
+        <UserInput id={id} selected={selected} pledgeAmount={pledgeAmount} />
       )}
     </Wrapper>
   )
