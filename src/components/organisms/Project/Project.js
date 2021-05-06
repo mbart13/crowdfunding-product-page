@@ -17,7 +17,7 @@ const MainWrapper = styled.main`
 
 const Project = ({ handleOpenModal }) => {
   return (
-    <MainWrapper>
+    <MainWrapper id="main">
       <ProjectDesc handleOpenModal={handleOpenModal} />
       <Stats />
       <About handleOpenModal={handleOpenModal} />

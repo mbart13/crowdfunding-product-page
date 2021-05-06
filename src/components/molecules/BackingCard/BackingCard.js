@@ -1,9 +1,9 @@
-import styled, { css, keyframes } from 'styled-components'
+import { useRef, useEffect } from 'react'
+import styled, { css } from 'styled-components'
 import ViewWrapper from '../ViewWrapper/ViewWrapper'
 import Paragraph from 'components/atoms/Paragraph/Paragraph'
 import ProductList from 'components/organisms/ProductList/ProductList'
 import { screen } from 'styles/Screen'
-import { useAppContext } from 'context'
 import { ReactComponent as CloseModal } from 'assets/images/icon-close-modal.svg'
 
 const Container = styled(ViewWrapper)`
@@ -25,19 +25,49 @@ const Heading = styled.div`
 
   h2 {
     font-size: 1.125rem;
+
+    ${screen.desktop(css`
+      font-size: 1.5rem;
+    `)}
   }
 
   svg {
     cursor: pointer;
+    transform: translateY(-100%);
+
+    :hover #path {
+      color: ${({ theme }) => theme.colors.black};
+      opacity: 1;
+    }
+
+    :focus {
+      outline: 2px dashed ${({ theme }) => theme.colors.red};
+      outline-offset: 4px;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
   }
 `
 
 const BackingCard = ({ handleCloseModal }) => {
+  const buttonRef = useRef()
+
+  useEffect(() => {
+    buttonRef.current.focus()
+  }, [])
+
   return (
     <Container>
       <Heading>
         <h2>Back this project</h2>
-        <CloseModal onClick={handleCloseModal} />
+        <CloseModal
+          onClick={handleCloseModal}
+          ref={buttonRef}
+          tabIndex="0"
+          aria-label="Close dialog"
+        />
       </Heading>
       <Paragraph>
         Want to support us in bringing Mastercraft Bamboo Monitor Riser out in

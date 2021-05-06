@@ -11,10 +11,18 @@ export const StyledButton = styled.button`
   font-weight: bold;
   transition: background-color 0.2s linear;
 
-  :hover,
-  :focus {
+  :hover {
     background-color: ${({ theme }) => theme.colors.darkCyan};
     cursor: pointer;
+  }
+
+  :focus {
+    outline: ${({ theme }) => `2px dashed ${theme.colors.cyan}`};
+    outline-offset: 4px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 
   ${({ disabled }) =>

@@ -6,8 +6,13 @@ const Wrapper = styled.footer`
   font-size: 0.7rem;
   margin-top: 5.75rem;
 
-  a:focus {
-    border: 2px dotted ${({ theme }) => theme.colors.darkCyan};
+  a {
+    color: ${({ theme }) => theme.colors.cyan};
+    font-size: inherit;
+
+    ::after {
+      background-color: ${({ theme }) => theme.colors.cyan};
+    }
   }
 `
 

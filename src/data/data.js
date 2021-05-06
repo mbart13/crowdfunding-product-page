@@ -16,7 +16,7 @@ const data = {
     textModal:
       'Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?',
   },
-  pledges: [
+  rewards: [
     {
       id: 1,
       title: 'Pledge with no reward',

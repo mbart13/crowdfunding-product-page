@@ -11,6 +11,11 @@ export const StyledBookmark = styled(StyledButton)`
   transition: color 0.2s linear;
   color: transparent;
 
+  input {
+    position: absolute;
+    opacity: 0;
+  }
+
   svg {
     position: absolute;
     top: 0;
@@ -28,8 +33,17 @@ export const StyledBookmark = styled(StyledButton)`
     cursor: pointer;
   }
 
-  :focus #circle {
-    /* fill: ${({ theme }) => theme.colors.gray}; */
+  :focus {
+    outline: ${({ theme }) => `2px dashed ${theme.colors.cyan}`};
+    outline-offset: 4px;
+  }
+
+  /* &:focus:not(:focus-visible) {
+    outline: none;
+  } */
+
+  span {
+    display: none;
   }
 
   ${({ bookmarked }) =>
@@ -50,6 +64,10 @@ export const StyledBookmark = styled(StyledButton)`
     padding-right: 1.5rem;
     width: unset;
     height: unset;
+
+    span {
+      display: inline;
+    }
 
     ${({ bookmarked }) =>
       bookmarked &&

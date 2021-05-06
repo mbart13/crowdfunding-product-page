@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isBackingCardShown, setIsShowBackingCardShown] = useState(false)
   const [isConfirmationCardShown, setIsConfirmationCardShown] = useState(false)
-  const [pledges, setPledges] = useState(data.pledges)
+  const [rewards, setRewards] = useState(data.rewards)
   const [stats, setStats] = useState(data.stats)
 
   const toggleMenu = () => {
@@ -33,13 +33,13 @@ const AppProvider = ({ children }) => {
   const closeConfirmationCard = () => setIsConfirmationCardShown(false)
 
   const selectReward = id => {
-    const updatedPledges = pledges.map(pledge => {
-      if (pledge.id === id) {
-        return { ...pledge, selected: true }
+    const updatedPledges = rewards.map(reward => {
+      if (reward.id === id) {
+        return { ...reward, selected: true }
       }
-      return { ...pledge, selected: false }
+      return { ...reward, selected: false }
     })
-    setPledges(updatedPledges)
+    setRewards(updatedPledges)
     openBackingCard()
   }
 
@@ -53,8 +53,18 @@ const AppProvider = ({ children }) => {
     })
   }
 
+  const updateRewards = id => {
+    const newRewards = rewards.map(reward => {
+      if (reward.id === id) {
+        return { ...reward, quantity: reward.quantity - 1 }
+      }
+      return reward
+    })
+    setRewards(newRewards)
+  }
+
   useEffect(() => {
-    isBackingCardShown || isConfirmationCardShown
+    isBackingCardShown
       ? (document.body.style.overflowY = 'hidden')
       : (document.body.style.overflowY = 'auto')
   }, [isBackingCardShown, isConfirmationCardShown])
@@ -71,9 +81,10 @@ const AppProvider = ({ children }) => {
         closeConfirmationCard,
         isMenuOpen,
         toggleMenu,
-        pledges,
+        rewards,
         selectReward,
         updateStats,
+        updateRewards,
       }}
     >
       {children}

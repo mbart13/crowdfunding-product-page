@@ -18,47 +18,21 @@ export const Wrapper = styled(ViewWrapper)`
   position: relative;
   opacity: ${({ quantity }) => (quantity === 0 ? 0.5 : 1)};
   pointer-events: ${({ quantity }) => (quantity === 0 ? 'none' : 'auto')};
-
-  ${({ selected }) =>
-    selected &&
-    css`
-      ${Description}:focus {
-        box-shadow: unset;
-      }
-      border: ${({ theme }) => `2px solid ${theme.colors.cyan}`};
-    `}
 `
 
 export const Description = styled.div`
   padding: 1.5rem;
-  background: none;
-  border: none;
   text-align: left;
   outline: none;
-  border-radius: ${({ theme }) => theme.borderRadius};
 
   :focus {
     box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.cyan};
   }
-
-  :hover {
-    cursor: pointer;
-  }
-
-  &:hover ${ProductName}, &:focus ${ProductName} {
-    color: ${({ theme }) => theme.colors.cyan};
-  }
-`
-
-export const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
 `
 
 export const NameWrapper = styled.div`
   font-size: 0.875rem;
+  margin-bottom: 1.5rem;
 
   ${screen.desktop(css`
     width: 100%;
@@ -66,8 +40,6 @@ export const NameWrapper = styled.div`
     gap: 1rem;
     justify-content: space-between;
     font-size: 1rem;
-    justify-content: flex-start;
-    width: unset;
   `)};
 `
 
@@ -80,8 +52,6 @@ export const StyledParagraph = styled(Paragraph)`
 
   ${screen.desktop(css`
     padding-left: 0;
-    padding-left: 3rem;
-    margin-bottom: 0;
   `)}
 `
 
@@ -103,18 +73,6 @@ export const Quantity = styled.p`
     font-weight: normal;
     vertical-align: super;
   }
-
-  span:first-child {
-    font-size: 1.125rem;
-  }
-  span:last-child {
-    vertical-align: initial;
-  }
-  ${screen.desktop(css`
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-  `)};
 `
 
 export const QuantityButtonWrapper = styled.div`

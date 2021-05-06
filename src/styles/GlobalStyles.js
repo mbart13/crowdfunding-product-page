@@ -1,6 +1,7 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 import bgMobile from 'assets/images/image-hero-mobile.jpg'
 import bgDesktop from 'assets/images/image-hero-desktop.jpg'
+import { screen } from 'styles/Screen'
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -115,4 +116,56 @@ export const GlobalStyles = createGlobalStyle`
     background: rgba(0, 0, 0, 0.5);
     transition: background 0.3s linear;
   }
+
+  a {
+    color: ${({ theme }) => theme.colors.black};
+    font-size: 1.125rem;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+
+    ::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: ${({ theme }) => theme.colors.black};
+      bottom: -3px;
+      left: 0px;
+      transform: scale(0);
+      transition: all 0.3s ease-in-out;
+      transform: scaleX(0);
+
+      ${screen.desktop(css`
+        background-color: ${({ theme }) => theme.colors.white};
+      `)};
+    }
+
+    :hover::after {
+      transform: scale(1);
+    }
+
+    :focus {
+      outline: 2px dashed ${({ theme }) => theme.colors.red};
+      outline-offset: 4x;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    ${screen.desktop(css`
+      color: ${({ theme }) => theme.colors.white};
+      font-size: 0.9375rem;
+    `)}
+
+  }
+
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+  display: none;
+}
+
 `
