@@ -18,7 +18,7 @@ const UserInput = ({ selected, pledgeAmount, id }) => {
   const isInvalid = useCallback(() => {
     return (
       !typedInput ||
-      (pledgeAmount && +typedInput <= pledgeAmount) ||
+      (pledgeAmount && +typedInput < pledgeAmount) ||
       +typedInput <= 0
     )
   }, [typedInput, pledgeAmount])
