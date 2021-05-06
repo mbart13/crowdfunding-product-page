@@ -2,9 +2,10 @@ import { useRef, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import ViewWrapper from '../ViewWrapper/ViewWrapper'
 import Paragraph from 'components/atoms/Paragraph/Paragraph'
-import ProductList from 'components/organisms/ProductList/ProductList'
 import { screen } from 'styles/Screen'
 import { ReactComponent as CloseModal } from 'assets/images/icon-close-modal.svg'
+import { useAppContext } from 'context'
+import Pledge from 'components/molecules/Pledge/Pledge'
 
 const Container = styled(ViewWrapper)`
   width: 85vw;
@@ -52,6 +53,7 @@ const Heading = styled.div`
 `
 
 const BackingCard = ({ handleCloseModal }) => {
+  const { rewards } = useAppContext()
   const buttonRef = useRef()
 
   useEffect(() => {
@@ -73,7 +75,9 @@ const BackingCard = ({ handleCloseModal }) => {
         Want to support us in bringing Mastercraft Bamboo Monitor Riser out in
         the world?
       </Paragraph>
-      <ProductList modalView />
+      {rewards.map(reward => (
+        <Pledge key={reward.id} {...reward} />
+      ))}
     </Container>
   )
 }
