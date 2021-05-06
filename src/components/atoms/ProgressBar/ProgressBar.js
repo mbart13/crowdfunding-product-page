@@ -11,7 +11,7 @@ const animateProgress = keyframes`
   }
 `
 
-const ProgressBar = styled.div`
+const StyledProgressBar = styled.div`
   position: relative;
   border-radius: 2.0938rem;
   background-color: ${({ theme }) => rgba(theme.colors.lighterBlack, 0.05)};
@@ -24,11 +24,16 @@ const ProgressBar = styled.div`
     top: 0;
     left: 0;
     background-color: ${({ theme }) => theme.colors.cyan};
-    width: ${props => `${Math.round((props.raised / props.total) * 100)}%`};
+    width: ${props => `${props.width}%`};
     height: 100%;
     border-radius: 2.0938rem;
     animation: ${animateProgress} 1s linear;
   }
 `
+const ProgressBar = ({ raised, total }) => {
+  const width = Math.round((raised / total) * 100)
+
+  return <StyledProgressBar width={width >= 100 ? 100 : width} />
+}
 
 export default ProgressBar
