@@ -8,7 +8,7 @@ This is a solution to the [Crowdfunding product page challenge on Frontend Mento
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
-  - [Setup]
+  - [Setup](#setup)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
