@@ -71,7 +71,7 @@ Finally, I played a bit with Storybook in this project to document components in
 
 ### Continued development
 
-Learn more about accessible modals for screen readers.
+Learn more about accessible modals for screen readers.  
 Learn Jest to create unit tests.
 
 ### Useful resources
