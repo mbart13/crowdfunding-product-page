@@ -31,7 +31,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot1.png)
+![](./screenshot.png)
 
 ### Links
 
@@ -71,7 +71,7 @@ Finally, I played a bit with Storybook in this project to document components in
 
 ### Continued development
 
-Learn more about accessible modals for screen readers.
+Learn more about accessible modals for screen readers.  
 Learn Jest to create unit tests.
 
 ### Useful resources
@@ -83,4 +83,4 @@ Learn Jest to create unit tests.
 ## Author
 
 - Frontend Mentor - [@mbart13](https://www.frontendmentor.io/profile/mbart13)
-  g
+
