@@ -11,7 +11,7 @@ const AppContext = React.createContext({
 
 const AppProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isBackingCardShown, setIsShowBackingCardShown] = useState(false)
+  const [isBackingCardShown, setIsBackingCardShown] = useState(false)
   const [isConfirmationCardShown, setIsConfirmationCardShown] = useState(false)
   const [rewards, setRewards] = useState(data.rewards)
   const [stats, setStats] = useState(data.stats)
@@ -27,9 +27,9 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  const openBackingCard = () => setIsShowBackingCardShown(true)
+  const openBackingCard = () => setIsBackingCardShown(true)
 
-  const closeBackingCard = () => setIsShowBackingCardShown(false)
+  const closeBackingCard = () => setIsBackingCardShown(false)
 
   const openConfirmationCard = () => setIsConfirmationCardShown(true)
 
