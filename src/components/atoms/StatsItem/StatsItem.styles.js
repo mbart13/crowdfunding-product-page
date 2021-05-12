@@ -7,6 +7,7 @@ export const Wrapper = styled.li`
   ${screen.desktop(css`
     flex: 1 1 33.33%;
     text-align: left;
+    list-style-type: none;
     &:not(:first-child) {
       ${screen.desktop(css`
         margin-left: 2rem;
