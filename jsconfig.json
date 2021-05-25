@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "validate": false
+      }
+    ]
   },
   "include": ["src/**/*"]
 }
