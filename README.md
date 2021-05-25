@@ -58,10 +58,11 @@ npm run storybook
 - React
 - Styled Components
 - CountUp.js
+- Focus-Trap-React
 
 ### What I learned
 
-I learned how to build modals from scratch without any libraries. Modal is accessible, user can navigate around the page and make a pledge using only keyboard.
+I learned how to build modals from scratch. For this I used ReactDOM.createPortal and small library called focus-trap-react. Modal is accessible, user can navigate around the page and make a pledge using only keyboard.
 
 For the first time I used atomic design methodology to structure the project and I will utilize it in my next bigger challenge to practice it more.
 
@@ -71,8 +72,7 @@ Finally, I played a bit with Storybook in this project to document components in
 
 ### Continued development
 
-Learn more about accessible modals for screen readers.  
-Learn Jest to create unit tests.
+Unit tests
 
 ### Useful resources
 
