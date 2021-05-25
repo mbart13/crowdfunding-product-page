@@ -18,7 +18,6 @@ const Pledge = ({ id, title, text, pledgeAmount, quantity, selected }) => {
   return (
     <Wrapper
       quantity={quantity}
-      // tabIndex={quantity === 0 ? '-1' : '0'}
       selected={selected}
       onFocus={() => selectReward(id)}
     >
@@ -27,8 +26,6 @@ const Pledge = ({ id, title, text, pledgeAmount, quantity, selected }) => {
           <Radio
             id={title}
             role="radio"
-            // tabIndex={quantity === 0 ? '-1' : '0'}
-            // {quantity === 0 && tabIndex="-1"}
             aria-label="Select Reward"
             checked={selected}
           />

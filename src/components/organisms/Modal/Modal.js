@@ -22,15 +22,6 @@ const Modal = ({ children, handleCloseModal, show }) => {
     [handleCloseModal]
   )
 
-  // useEffect(() => {
-  //   const modal = document.getElementById('modal-container')
-  //   const focusableElementsString =
-  //     'input:not([disabled]), button:not([disabled]), *[tabindex="0"]'
-
-  //   let focusableElements = modal.querySelectorAll(focusableElementsString)
-  //   console.log(focusableElements)
-  // }, [])
-
   useEffect(() => {
     window.addEventListener('keydown', handleEsc)
     return () => window.removeEventListener('keydown', handleEsc)
