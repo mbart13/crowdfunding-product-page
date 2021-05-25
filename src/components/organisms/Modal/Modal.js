@@ -1,47 +1,7 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
 import ReactDOM from 'react-dom'
-
-import styled, { keyframes } from 'styled-components'
-
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-`
-
-const fadeOut = keyframes`
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-`
-
-const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-  display: grid;
-  place-items: center;
-  padding: 5.5rem 1.5rem;
-
-  &.fade-in {
-    animation: ${fadeIn} 0.5s forwards ease-in;
-  }
-
-  &.fade-out {
-    animation: ${fadeOut} 0.5s forwards ease-in;
-  }
-`
+import FocusTrap from 'focus-trap-react'
+import { Wrapper } from './Modal.styles'
 
 const Modal = ({ children, handleCloseModal, show }) => {
   const [shouldRender, setRender] = useState(show)
@@ -62,6 +22,15 @@ const Modal = ({ children, handleCloseModal, show }) => {
     [handleCloseModal]
   )
 
+  // useEffect(() => {
+  //   const modal = document.getElementById('modal-container')
+  //   const focusableElementsString =
+  //     'input:not([disabled]), button:not([disabled]), *[tabindex="0"]'
+
+  //   let focusableElements = modal.querySelectorAll(focusableElementsString)
+  //   console.log(focusableElements)
+  // }, [])
+
   useEffect(() => {
     window.addEventListener('keydown', handleEsc)
     return () => window.removeEventListener('keydown', handleEsc)
@@ -77,16 +46,18 @@ const Modal = ({ children, handleCloseModal, show }) => {
 
   return ReactDOM.createPortal(
     shouldRender && (
-      <Wrapper
-        role="dialog"
-        aria-modal="true"
-        onAnimationEnd={onAnimationEnd}
-        className={show ? 'fade-in' : 'fade-out'}
-        onClick={closeModal}
-        ref={modalRef}
-      >
-        {children}
-      </Wrapper>
+      <FocusTrap>
+        <Wrapper
+          role="dialog"
+          aria-modal="true"
+          onAnimationEnd={onAnimationEnd}
+          className={show ? 'fade-in' : 'fade-out'}
+          onClick={closeModal}
+          ref={modalRef}
+        >
+          {children}
+        </Wrapper>
+      </FocusTrap>
     ),
     document.getElementById('modal-container')
   )

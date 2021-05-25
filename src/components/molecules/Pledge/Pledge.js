@@ -18,13 +18,20 @@ const Pledge = ({ id, title, text, pledgeAmount, quantity, selected }) => {
   return (
     <Wrapper
       quantity={quantity}
-      tabIndex={quantity === 0 ? '-1' : ''}
+      // tabIndex={quantity === 0 ? '-1' : '0'}
       selected={selected}
-      onClick={() => selectReward(id)}
+      onFocus={() => selectReward(id)}
     >
-      <Description as="button" disabled={quantity === 0}>
-        <HeaderWrapper>
-          <Radio role="radio" aria-label="Select Reward" checked={selected} />
+      <Description>
+        <HeaderWrapper htmlFor={title} tabIndex={quantity === 0 ? '-1' : '0'}>
+          <Radio
+            id={title}
+            role="radio"
+            // tabIndex={quantity === 0 ? '-1' : '0'}
+            // {quantity === 0 && tabIndex="-1"}
+            aria-label="Select Reward"
+            checked={selected}
+          />
           <NameWrapper>
             <ProductName>{title}</ProductName>
             {pledgeAmount && (
@@ -42,9 +49,12 @@ const Pledge = ({ id, title, text, pledgeAmount, quantity, selected }) => {
           </QuantityButtonWrapper>
         )}
       </Description>
-      {quantity !== 0 && selected && (
-        <UserInput id={id} selected={selected} pledgeAmount={pledgeAmount} />
-      )}
+      <UserInput
+        id={id}
+        selected={selected}
+        pledgeAmount={pledgeAmount}
+        tab={quantity === 0 ? '-1' : '0'}
+      />
     </Wrapper>
   )
 }

@@ -19,6 +19,10 @@ export const Wrapper = styled(ViewWrapper)`
   opacity: ${({ quantity }) => (quantity === 0 ? 0.5 : 1)};
   pointer-events: ${({ quantity }) => (quantity === 0 ? 'none' : 'auto')};
 
+  :focus-within {
+    border: ${({ theme }) => `2px solid ${theme.colors.cyan}`};
+  }
+
   ${({ selected }) =>
     selected &&
     css`
@@ -55,6 +59,14 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  cursor: pointer;
+  &:focus ${ProductName} {
+    color: ${({ theme }) => theme.colors.cyan};
+  }
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export const NameWrapper = styled.div`

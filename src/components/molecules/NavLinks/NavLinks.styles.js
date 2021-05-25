@@ -37,10 +37,6 @@ export const StyledNavLink = styled.li`
     text-decoration: none;
     font-weight: 500;
     position: relative;
-    /* :hover,
-    :focus {
-      text-decoration: underline;
-    } */
 
     ::after {
       content: '';

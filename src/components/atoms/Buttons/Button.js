@@ -6,6 +6,7 @@ const Button = ({
   className,
   small = false,
   handleClick,
+  tab,
 }) => {
   return (
     <StyledButton
@@ -13,6 +14,7 @@ const Button = ({
       small={small}
       disabled={disabled}
       className={className}
+      tabIndex={tab}
     >
       {label}
     </StyledButton>

@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 import { useState, useEffect, useCallback } from 'react'
 import Button from 'components/atoms/Buttons/Button'
 import Input from 'components/atoms/Input/Input'
-import { Wrapper, FormWrapper } from './UserInput.styles'
+import { Wrapper, FormWrapper, ErrorMessage } from './UserInput.styles'
 import { useAppContext } from 'context'
 
-const UserInput = ({ selected, pledgeAmount, id }) => {
+const UserInput = ({ selected, pledgeAmount, id, tab }) => {
   const {
     openConfirmationCard,
     closeBackingCard,
@@ -14,6 +14,7 @@ const UserInput = ({ selected, pledgeAmount, id }) => {
   } = useAppContext()
   const [typedInput, setTypedInput] = useState('')
   const [isError, setIsError] = useState(false)
+  const [showError, setShowError] = useState(false)
 
   const isInvalid = useCallback(() => {
     return (
@@ -39,6 +40,8 @@ const UserInput = ({ selected, pledgeAmount, id }) => {
       updateRewards(id)
       closeBackingCard()
       setTimeout(() => openConfirmationCard(), 2000)
+    } else {
+      setShowError(true)
     }
   }
 
@@ -54,12 +57,12 @@ const UserInput = ({ selected, pledgeAmount, id }) => {
 
   return (
     <Wrapper
+      isError={isError}
       selected={selected}
-      aria-live="polite"
       aria-expanded={selected ? true : false}
     >
       <h3>Enter your pledge</h3>
-      <FormWrapper onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={handleSubmit} aria-live="polite">
         <Input
           type="number"
           placeholder={pledgeAmount}
@@ -67,8 +70,15 @@ const UserInput = ({ selected, pledgeAmount, id }) => {
           handleInput={handleInput}
           value={typedInput}
           isError={isError}
+          tab={tab}
+          aria-invalid={isError}
         />
-        <Button label="Continue" />
+        <Button label="Continue" tab={tab} />
+        {showError && (
+          <ErrorMessage>
+            Minimum pledge should be {pledgeAmount ? pledgeAmount : '1'}
+          </ErrorMessage>
+        )}
       </FormWrapper>
     </Wrapper>
   )

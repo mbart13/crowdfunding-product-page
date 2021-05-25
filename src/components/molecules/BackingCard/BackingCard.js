@@ -67,6 +67,7 @@ const BackingCard = ({ handleCloseModal }) => {
         <CloseModal
           onClick={handleCloseModal}
           ref={buttonRef}
+          role="button"
           tabIndex="0"
           aria-label="Close dialog"
         />

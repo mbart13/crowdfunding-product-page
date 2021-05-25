@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
   pointer-events: none;
+  max-height: 0;
+  opacity: 0;
 
   h3 {
     font-size: 0.875rem;
@@ -36,6 +38,7 @@ export const Wrapper = styled.div`
       max-height: 50rem;
       padding: 1.5rem;
       pointer-events: auto;
+      opacity: 1;
     `}
 `
 
@@ -62,4 +65,10 @@ export const FormWrapper = styled.form`
     font-size: 0.875rem;
     max-width: 7.1875rem;
   }
+`
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 0.7rem;
+  align-self: center;
 `

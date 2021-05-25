@@ -8,6 +8,7 @@ const Input = ({
   handleInput,
   value,
   isError,
+  tab,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const Input = ({
           placeholder={placeholder}
           onChange={handleInput}
           value={value}
+          tabIndex={tab}
         />
       </InputWrapper>
     </>

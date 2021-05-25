@@ -83,4 +83,3 @@ Learn Jest to create unit tests.
 ## Author
 
 - Frontend Mentor - [@mbart13](https://www.frontendmentor.io/profile/mbart13)
-

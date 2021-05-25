@@ -147,7 +147,7 @@ export const GlobalStyles = createGlobalStyle`
 
     :focus {
       outline: 2px dashed ${({ theme }) => theme.colors.red};
-      outline-offset: 4x;
+      outline-offset: 4px;
     }
 
     &:focus:not(:focus-visible) {
@@ -160,12 +160,6 @@ export const GlobalStyles = createGlobalStyle`
     `)}
 
   }
-
-  details > summary {
-    list-style: none;
-  }
-  details > summary::-webkit-details-marker {
-  display: none;
 }
 
 `
